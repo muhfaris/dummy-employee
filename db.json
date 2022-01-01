@@ -1,13 +1,11 @@
 {
   "posts": [
-   {
-    "status": "success",
-    "data": {
-        "name": "test",
-        "salary": "123",
-        "age": "23",
-        "id": 25
+    {
+      "name": "yahoo",
+      "salary": 90000,
+      "age": 123,
+      "created_at": 1641004084982,
+      "id": 34
     }
-}
   ]
 }
