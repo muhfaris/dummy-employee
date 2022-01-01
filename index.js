@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 app.post("/v1/create", (req, res) => {
+  console.log(req.body)
   res.jsonp({
     status: "success",
     data: req.body,
