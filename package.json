@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "node index.js"
+  },
   "devDependencies": {
     "json-server": "^0.17.0"
   }
