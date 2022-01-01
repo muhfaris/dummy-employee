@@ -1,29 +1,21 @@
-// server.js
-const jsonServer = require('json-server')
-const server = jsonServer.create()
-const router = jsonServer.router('./db.json')
-const middlewares = jsonServer.defaults()
+const express = require("express")
+const bodyParser = require("body-parser")
 
-server.use(middlewares)
+const PORT = process.env.PORT || 3000
+const app = express()
 
-server.use(jsonServer.bodyParser)
-server.use((req, res, next) => {
-  if (req.method === 'POST') {
-    req.body.created_at = Date.now()
-  }
-  // Continue to JSON Server router
-  next()
+app.set("json spaces", 2)
+
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+
+app.post("/v1/create", (req, res) => {
+  res.jsonp({
+    status: "success",
+    data: req.body,
+  })
 })
 
-// In this example, returned resources will be wrapped in a body property
-router.render = (req, res) => {
-  res.jsonp({
-    success: "success",
-    data: res.locals.data
-  })
-}
-
-server.use(router)
-server.listen(3000, () => {
-  console.log('JSON Server is running')
+app.listen(PORT, function() {
+  console.log(`Express server listening on port ${PORT}`)
 })
